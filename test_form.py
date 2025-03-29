@@ -28,7 +28,7 @@ def test_complete_form():
     browser.element('.react-datepicker__month-select').element('[value="7"]').click()
     browser.element('.react-datepicker__day--009').click()
 
-    browser.element('#subjectsInput').type('ma').press_tab()
+    browser.element('#subjectsInput').type('Maths').press_enter()
 
     browser.element('[for=hobbies-checkbox-1]').click()
     browser.element('[for=hobbies-checkbox-2]').click()
@@ -43,3 +43,14 @@ def test_complete_form():
     browser.element('#submit').press_enter()
 
     browser.element('#example-modal-sizes-title-lg').should(have.exact_text('Thanks for submitting the form'))
+    browser.all('tbody tr').should(have.exact_texts(
+        'Student Name Papa Carlo',
+        'Student Email PapaCarlo@example.com',
+        'Gender Male',
+        'Mobile 9035645454',
+        'Date of Birth 09 August,1997',
+        'Subjects Maths',
+        'Hobbies Sports, Reading, Music',
+        'Picture test.png',
+        'Address Ekb, Russia',
+        'State and City NCR Delhi'))
