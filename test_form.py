@@ -28,7 +28,7 @@ def test_complete_form():
     browser.element('.react-datepicker__month-select').element('[value="7"]').click()
     browser.element('.react-datepicker__day--009').click()
 
-    #browser.element('#subjectsInput').type('ma').press_enter()
+    browser.element('#subjectsInput').type('ma').press_tab()
 
     browser.element('[for=hobbies-checkbox-1]').click()
     browser.element('[for=hobbies-checkbox-2]').click()
