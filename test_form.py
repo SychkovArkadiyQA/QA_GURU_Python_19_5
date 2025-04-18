@@ -1,7 +1,7 @@
 import os
 
 import pytest
-from selene import browser, have
+from selene import browser, have, by
 
 @pytest.fixture(scope='function', autouse=True)
 def browser_management():
@@ -28,7 +28,10 @@ def test_complete_form():
     browser.element('.react-datepicker__month-select').element('[value="7"]').click()
     browser.element('.react-datepicker__day--009').click()
 
-    browser.element('#subjectsInput').type('Maths').press_enter()
+    browser.element('#subjectsInput').click()
+    browser.element('#subjectsInput').type('Math')
+    browser.element(
+        by.xpath(f'//div[contains(@class, "subjects-auto-complete__option")]')).click()
 
     browser.element('[for=hobbies-checkbox-1]').click()
     browser.element('[for=hobbies-checkbox-2]').click()
